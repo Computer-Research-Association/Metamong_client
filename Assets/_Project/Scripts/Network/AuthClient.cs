@@ -2,15 +2,16 @@ using UnityEngine;
 
 public class AuthClient : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    private AppConfig config;
+    public string AccessToken { get; private set; }
+
+    public void Init(AppConfig appConfig)
     {
-        
+        config = appConfig;
+        Debug.Log("[AuthClient] Config Loaded");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
+
 }
