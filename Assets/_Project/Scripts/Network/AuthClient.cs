@@ -1,4 +1,7 @@
 using UnityEngine;
+using System.Collections;
+using UnityEngine.Networking;
+using System;
 
 public class AuthClient : MonoBehaviour
 {
@@ -31,6 +34,25 @@ public class AuthClient : MonoBehaviour
         AccessToken = token;
         PlayerPrefs.SetString("JWT_TOKEN", token);
         Debug.Log($"[Auth] Token Saved: {token}");
+    }
+
+    // TODO: JsonConverter 와 스키마 적용해야 함.
+    public IEnumerator GetMe(Action<string> successCallback, Action<string> errorCallback)
+    {
+        using (UnityWebRequest webRequest = UnityWebRequest.Get($"{config.apiBaseUrl}/users/me"))
+        {
+            webRequest.SetRequestHeader("Authorization", $"Bearer {AccessToken}");
+            yield return webRequest.SendWebRequest();
+
+            if (webRequest.result == UnityWebRequest.Result.Success)
+            {
+                successCallback?.Invoke(webRequest.downloadHandler.text);
+            }
+            else
+            {
+                errorCallback?.Invoke(webRequest.error);
+            }
+        }
     }
 
 }
