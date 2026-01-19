@@ -26,4 +26,11 @@ public class AuthClient : MonoBehaviour
         Application.OpenURL(loginUrl);
     }
 
+    public void SetToken(string token)
+    {
+        AccessToken = token;
+        PlayerPrefs.SetString("JWT_TOKEN", token);
+        Debug.Log($"[Auth] Token Saved: {token}");
+    }
+
 }
