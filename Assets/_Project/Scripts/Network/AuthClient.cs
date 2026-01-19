@@ -2,6 +2,8 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.Networking;
 using System;
+using Metamong.Core;
+using Newtonsoft.Json;
 
 public class AuthClient : MonoBehaviour
 {
@@ -36,8 +38,7 @@ public class AuthClient : MonoBehaviour
         Debug.Log($"[Auth] Token Saved: {token}");
     }
 
-    // TODO: JsonConverter 와 스키마 적용해야 함.
-    public IEnumerator GetMe(Action<string> successCallback, Action<string> errorCallback)
+    public IEnumerator GetMe(Action<UserData> successCallback, Action<string> errorCallback)
     {
         using (UnityWebRequest webRequest = UnityWebRequest.Get($"{config.apiBaseUrl}/users/me"))
         {
@@ -46,7 +47,20 @@ public class AuthClient : MonoBehaviour
 
             if (webRequest.result == UnityWebRequest.Result.Success)
             {
-                successCallback?.Invoke(webRequest.downloadHandler.text);
+                string jsonResponse = webRequest.downloadHandler.text;
+
+                try
+                {
+                    // Newtonsoft.Json을 사용하여 역직렬화
+                    UserData user = JsonConvert.DeserializeObject<UserData>(jsonResponse);
+                    Debug.Log($"[Auth] Welcome, {user.Nickname}!");
+                    successCallback?.Invoke(user);
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogError($"[Auth] JSON Parsing Error: {ex.Message}");
+                    errorCallback?.Invoke(ex.Message);
+                }
             }
             else
             {
