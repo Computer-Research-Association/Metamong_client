@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using Metamong.Core;
 using System.Data;
+using UnityEngine.SceneManagement;
 
 public class LoginUI : MonoBehaviour
 {
@@ -72,8 +73,12 @@ public class LoginUI : MonoBehaviour
 
         NetworkManager.Instance.SetCurrentUser(user);
 
-        // TODO: 여기서 씬을 넘기거나 PlayerManager를 초기화
-        // ex) SceneManager.LoadScene("MainSquare");
+        Invoke(nameof(LoadGameScene), 1.0f); // 1초 뒤 광장 씬 이동
+    }
+
+    void LoadGameScene()
+    {
+        SceneManager.LoadScene("MainSquareTest");
     }
 
     private void OnLoginFail(string error)
