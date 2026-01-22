@@ -1,3 +1,4 @@
+using Metamong.Core;
 using UnityEngine;
 
 public class NetworkManager : MonoBehaviour
@@ -7,6 +8,8 @@ public class NetworkManager : MonoBehaviour
     [SerializeField] private AppConfig config;
 
     public AuthClient Auth { get; private set; }
+
+    public UserData CurrentUser { get; private set; }
 
     private void Awake()
     {
@@ -26,5 +29,11 @@ public class NetworkManager : MonoBehaviour
     {
         Auth = gameObject.AddComponent<AuthClient>();
         Auth.Init(config);
+    }
+
+    public void SetCurrentUser(UserData user)
+    {
+        CurrentUser = user;
+        Debug.Log($"[NetworkManager] Logged In User Saved: {user.Nickname} (RC: {user.Rc})");
     }
 }

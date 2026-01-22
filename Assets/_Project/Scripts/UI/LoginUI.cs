@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using Metamong.Core;
 using System.Data;
+using UnityEngine.SceneManagement;
 
 public class LoginUI : MonoBehaviour
 {
@@ -67,11 +68,17 @@ public class LoginUI : MonoBehaviour
 
     private void OnLoginSuccess(UserData user)
     {
-        UpdateStatus($"Login Success!\nWelcom, {user.Nickname}님 ({user.Rc})", Color.green);
+        UpdateStatus($"Login Success!\nWelcome, {user.Nickname}님 ({user.Rc})", Color.green);
         Debug.Log($"[LoginUI] User: {user.Nickname}, RC: {user.Rc}");
 
-        // TODO: 여기서 씬을 넘기거나 PlayerManager를 초기화
-        // ex) SceneManager.LoadScene("MainSquare");
+        NetworkManager.Instance.SetCurrentUser(user);
+
+        Invoke(nameof(LoadGameScene), 1.0f); // 1초 뒤 광장 씬 이동
+    }
+
+    void LoadGameScene()
+    {
+        SceneManager.LoadScene("MainSquareTest");
     }
 
     private void OnLoginFail(string error)
