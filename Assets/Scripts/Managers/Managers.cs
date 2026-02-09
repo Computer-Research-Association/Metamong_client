@@ -5,6 +5,13 @@ public class Managers : MonoBehaviour
     static Managers _instance;
     public static Managers Instance { get { Init(); return _instance; } }
 
+    #region [Sub Managers]
+
+    AuthManager _auth = new AuthManager();
+    public static AuthManager Auth { get { return Instance._auth; } }
+
+    #endregion
+
     void Awake()
     {
         Init();

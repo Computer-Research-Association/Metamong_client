@@ -1,13 +1,8 @@
 using UnityEngine;
 
-public class AuthManager : MonoBehaviour
+public class AuthManager
 {
     void Start()
-    {
-
-    }
-
-    void Update()
     {
 
     }
