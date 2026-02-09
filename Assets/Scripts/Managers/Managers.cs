@@ -1,4 +1,3 @@
-using UnityEditorInternal;
 using UnityEngine;
 
 public class Managers : MonoBehaviour
@@ -6,7 +5,10 @@ public class Managers : MonoBehaviour
     static Managers _instance;
     public static Managers Instance { get { Init(); return _instance; } }
 
-
+    void Awake()
+    {
+        Init();
+    }
 
     private static void Init()
     {
@@ -18,6 +20,9 @@ public class Managers : MonoBehaviour
                 go = new GameObject { name = "@Managers" };
                 go.AddComponent<Managers>();
             }
+
+            DontDestroyOnLoad(go);
+            _instance = go.GetComponent<Managers>();
         }
     }
 }
