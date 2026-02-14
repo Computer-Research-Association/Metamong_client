@@ -1,14 +1,9 @@
 using UnityEngine;
 
-public class UI_Scene : MonoBehaviour
+public class UI_Scene : UI_Base
 {
-    void Start()
+    public override void Init()
     {
-        
-    }
-
-    void Update()
-    {
-        
+        Managers.UI.SetCanvas(gameObject, false);
     }
 }
