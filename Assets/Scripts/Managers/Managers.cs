@@ -8,7 +8,12 @@ public class Managers : MonoBehaviour
     #region [Sub Managers]
 
     ResourceManager _resource = new ResourceManager();
+    UIManager _ui = new UIManager();
+
     public static ResourceManager Resource { get { return Instance._resource; } }
+    public static UIManager UI { get { return Instance._ui; } }
+
+
     AuthManager _auth = new AuthManager();
     public static AuthManager Auth { get { return Instance._auth; } }
 
