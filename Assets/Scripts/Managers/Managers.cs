@@ -7,6 +7,8 @@ public class Managers : MonoBehaviour
 
     #region [Sub Managers]
 
+    ResourceManager _resource = new ResourceManager();
+    public static ResourceManager Resource { get { return Instance._resource; } }
     AuthManager _auth = new AuthManager();
     public static AuthManager Auth { get { return Instance._auth; } }
 
