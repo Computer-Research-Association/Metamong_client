@@ -116,17 +116,21 @@ TextureImporter:
       name: NaverLogo_0
       rect:
         serializedVersion: 2
-        x: 55
-        y: 54
-        width: 402
-        height: 402
+        x: 79
+        y: 78
+        width: 356
+        height: 356
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
-      outline: []
+      outline:
+      - - {x: -153, y: 112}
+        - {x: -93, y: 112}
+        - {x: -93, y: 166}
+        - {x: -153, y: 166}
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
       spriteID: cdcfb9ced948d2f20800000000000000
       internalID: 3399519107548970204
@@ -149,6 +153,8 @@ TextureImporter:
       entries:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+      - key: SpriteEditor.SliceOnImport
+        value: False
     nameFileIdTable:
       NaverLogo_0: 3399519107548970204
   mipmapLimitGroupName: 
