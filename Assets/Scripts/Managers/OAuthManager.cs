@@ -174,5 +174,17 @@ public class OAuthManager : MonoBehaviour
         // TODO: Logout event 발생 (Scene 전환 등)
     }
 
+    public void RefreshUserInfo(Action<UserData> onSuccess, Action<string> onError)
+    {
+        if (!Managers.Auth.IsLoggedIn)
+        {
+            Debug.LogWarning("[OAuth] Not logged in");
+            onError?.Invoke("Not logged in");
+            return;
+        }
+
+        StartCoroutine(GetMe(onSuccess, onError));
+    }
+
 
 }
