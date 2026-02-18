@@ -18,6 +18,8 @@ public class OAuthManager : MonoBehaviour
     public string mockToken = "";
 
 
+    #region [OAuth Login Flow]
+
     public void LoginWithGoogle() { StartOAuthFlow("google"); }
     public void LoginWithKakao() { StartOAuthFlow("kakao"); }
     public void LoginWithNaver() { StartOAuthFlow("naver"); }
@@ -50,6 +52,10 @@ public class OAuthManager : MonoBehaviour
         OnOAuthSuccess(mockToken);
     }
 
+    #endregion
+
+    #region [OAuth Callbacks]
+
     public void OnOAuthSuccess(string token)
     {
         Debug.Log($"OAuth Success! Token: " + token);
@@ -57,13 +63,25 @@ public class OAuthManager : MonoBehaviour
         // AuthManager에 토큰 저장
         Managers.Auth.SetToken(token);
 
-        // TODO: 유저 정보 가져오기
+        StartCoroutine(GetMe(
+            onSuccess: (UserData userData) =>
+            {
+                Debug.Log($"[OAuth] Welcome, {userData.Nickname}.");
+                OnLoginComplete(userData);
+            },
+            onError: (string error) =>
+            {
+                Debug.LogError($"[OAuth] Failed to get user info: {error}");
+            }
+        ));
     }
 
     public void OnOAuthError(string error)
     {
         Debug.LogError("OAuth Error: " + error);
     }
+
+    #endregion
 
 
     public IEnumerator GetMe(Action<UserData> onSuccess, Action<string> onError)
@@ -133,4 +151,20 @@ public class OAuthManager : MonoBehaviour
         }
 
     }
+
+    #region [Events]
+
+    public event Action<UserData> OnUserLoggedIn;
+
+    private void OnLoginComplete(UserData userData)
+    {
+        // Event Invoke
+        OnUserLoggedIn?.Invoke(userData);
+
+        // TODO: 이벤트 Invoke 이후 추가 처리 필요시 작업 (Scene 전환, UI 업데이트)
+    }
+
+    #endregion
+
+
 }
