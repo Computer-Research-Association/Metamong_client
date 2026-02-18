@@ -35,9 +35,15 @@ public class OAuthManager : MonoBehaviour
 
 #if UNITY_WEBGL && !UNITY_EDITOR
         OpenOAuthWindow(loginURL);
-#else 
+#else
         Application.OpenURL(loginURL);
 #endif
+    }
+
+    private IEnumerator SimulateOAuthSuccess()
+    {
+        yield return new WaitForSeconds(1f);
+        OnOAuthSuccess(mockToken);
     }
 
     public void OnOAuthSuccess(string token)
