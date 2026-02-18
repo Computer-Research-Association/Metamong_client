@@ -23,6 +23,15 @@ namespace Metamong.Core
     ACTIVE, SUSPENDED, DELETED, NEW, GUEST
   }
 
+  [JsonConverter(typeof(StringEnumConverter))]
+  public enum MBTI
+  {
+    ISTJ, ISFJ, INFJ, INTJ,
+    ISTP, ISFP, INFP, INTP,
+    ESTP, ESFP, ENFP, ENTP,
+    ESTJ, ESFJ, ENFJ, ENTJ,
+  }
+
   #endregion
 
   #region [Data Models - DTO]
