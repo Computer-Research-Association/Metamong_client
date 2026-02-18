@@ -22,7 +22,17 @@ public class OAuthManager : MonoBehaviour
 
     private void StartOAuthFlow(string provider)
     {
+#if UNITY_EDITOR // Unity Editor에서는 Mock토큰 사용하기
+        if (useMockToken)
+        {
+            Debug.Log("Using Mock Token");
+            return;
+        }
+#endif
+
         string loginURL = $"{API_BASE_URL}/auth/login/{provider}";
+
+
 #if UNITY_WEBGL && !UNITY_EDITOR
         OpenOAuthWindow(loginURL);
 #else 
