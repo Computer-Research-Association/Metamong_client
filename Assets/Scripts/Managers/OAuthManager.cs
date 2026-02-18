@@ -166,5 +166,13 @@ public class OAuthManager : MonoBehaviour
 
     #endregion
 
+    public void Logout()
+    {
+        Debug.Log("[OAuth] Logging out");
+        Managers.Auth.ClearToken();
+
+        // TODO: Logout event 발생 (Scene 전환 등)
+    }
+
 
 }
