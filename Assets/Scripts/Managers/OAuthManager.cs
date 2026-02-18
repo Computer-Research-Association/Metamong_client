@@ -112,6 +112,23 @@ public class OAuthManager : MonoBehaviour
 
                 }
             }
+            else
+            {
+                Debug.LogError($"[OAuth] Request failed: {request.error}");
+                Debug.LogError($"[OAuth] Response Code: {request.responseCode}");
+
+                // 401 에러면 토큰이 만료된 것
+                if (request.responseCode == 401)
+                {
+                    Debug.LogWarning("[OAuth] Token expired or invalid. Clearing token.");
+                    Managers.Auth.ClearToken();
+                    onError?.Invoke("Token expired. Please login again.");
+                }
+                else
+                {
+                    onError?.Invoke(request.error);
+                }
+            }
 
         }
 
