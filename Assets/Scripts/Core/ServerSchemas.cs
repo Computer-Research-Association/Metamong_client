@@ -8,7 +8,7 @@ namespace Metamong.Core
   [JsonConverter(typeof(StringEnumConverter))]
   public enum AuthProvider
   {
-    GOOGLE, KAKAO, NAVER
+    GOOGLE, KAKAO, NAVER, LOCAL
   }
 
   [JsonConverter(typeof(StringEnumConverter))]
@@ -20,7 +20,7 @@ namespace Metamong.Core
   [JsonConverter(typeof(StringEnumConverter))]
   public enum UserStatus
   {
-    ACTIVE, INACTIVE, BANNED
+    ACTIVE, SUSPENDED, DELETED, NEW, GUEST
   }
 
   #endregion
