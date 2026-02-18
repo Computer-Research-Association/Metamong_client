@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -10,6 +9,11 @@ public class OAuthManager : MonoBehaviour
     private static extern void OpenOAuthWindow(string url);
 
     private string API_BASE_URL = AppConfig.Instance.apiBaseUrl;
+
+    [Header("Development Only")]
+    public bool useMockToken = true;
+    public string mockToken = "";
+
 
     public void LoginWithGoogle() { StartOAuthFlow("google"); }
     public void LoginWithKakao() { StartOAuthFlow("kakao"); }
