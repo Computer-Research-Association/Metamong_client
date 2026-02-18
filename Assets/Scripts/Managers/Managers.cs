@@ -8,12 +8,14 @@ public class Managers : MonoBehaviour
     #region [Sub Managers]
 
     AuthManager _auth = new AuthManager();
+    OAuthManager _oauth = new OAuthManager();
     ResourceManager _resource = new ResourceManager();
     UIManager _ui = new UIManager();
     UserManager _user = new UserManager();
 
 
     public static AuthManager Auth { get { return Instance._auth; } }
+    public static OAuthManager OAuth { get { return Instance._oauth; } }
     public static ResourceManager Resource { get { return Instance._resource; } }
     public static UIManager UI { get { return Instance._ui; } }
     public static UserManager User { get { return Instance._user; } }
