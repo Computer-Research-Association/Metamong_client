@@ -40,4 +40,14 @@ public class UserManager
 
         CurrentUser = updatedUserData;
     }
+
+    public bool IsNewUser()
+    {
+        return _currentUser != null && _currentUser.Status == UserStatus.NEW;
+    }
+    public bool IsActiveUser()
+    {
+        return _currentUser != null && _currentUser.Status == UserStatus.ACTIVE;
+    }
+
 }
