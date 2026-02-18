@@ -1,14 +1,5 @@
 using UnityEngine;
 
-public class UserManager : MonoBehaviour
+public class UserManager
 {
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
 }

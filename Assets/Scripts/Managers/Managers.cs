@@ -10,11 +10,13 @@ public class Managers : MonoBehaviour
     AuthManager _auth = new AuthManager();
     ResourceManager _resource = new ResourceManager();
     UIManager _ui = new UIManager();
+    UserManager _user = new UserManager();
 
 
     public static AuthManager Auth { get { return Instance._auth; } }
     public static ResourceManager Resource { get { return Instance._resource; } }
     public static UIManager UI { get { return Instance._ui; } }
+    public static UserManager User { get { return Instance._user; } }
 
 
     #endregion
