@@ -1,7 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "AppConfig", menuName = "Scriptable Objects/AppConfig")]
-public class AppConfig : ScriptableObject
+public class AppConfig : MonoBehaviour
 {
   private static AppConfig _instance;
   public static AppConfig Instance
@@ -10,10 +9,25 @@ public class AppConfig : ScriptableObject
     {
       if (_instance == null)
       {
-        _instance = Resources.Load<AppConfig>("Configs/ENV");
+        GameObject go = new GameObject("AppConfig");
+        _instance = go.AddComponent<AppConfig>();
+        // _instance = Resources.Load<AppConfig>("Configs/ENV");
+        DontDestroyOnLoad(go);
       }
       return _instance;
     }
+  }
+
+  private void Awake()
+  {
+    if (_instance != null && _instance != this)
+    {
+      Destroy(gameObject);
+      return;
+    }
+
+    _instance = this;
+    DontDestroyOnLoad(gameObject);
   }
 
 

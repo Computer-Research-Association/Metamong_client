@@ -3,14 +3,21 @@ using UnityEngine;
 
 public class AuthManager
 {
+    // Private 필드
     private string _accessToken;
     private DateTime _tokenExpiry;
     private const string TOKEN_KEY = "access_token";
     private const string EXPIRY_KEY = "token_expiry";
+    private bool _initialized = false;
 
+    // Public 프로퍼티
     public string AccessToken
     {
-        get => _accessToken;
+        get
+        {
+            EnsureInitialized();
+            return _accessToken;
+        }
         private set
         {
             _accessToken = value;
@@ -22,21 +29,40 @@ public class AuthManager
         }
     }
 
-    public bool IsLoggedIn => !string.IsNullOrEmpty(_accessToken) && !IsTokenExpired();
+    public bool IsLoggedIn
+    {
+        get
+        {
+            EnsureInitialized();
+            return !string.IsNullOrEmpty(_accessToken) && !IsTokenExpired();
+        }
+    }
 
-    // Constructor - 저장된 토큰 로드
+    // Constructor - PlayerPrefs 호출 제거!
     public AuthManager()
     {
-        LoadToken();
+        Debug.Log("[AuthManager] Created (lazy initialization)");
+    }
+
+    /// <summary>
+    /// 지연 초기화 - 처음 접근 시에만 PlayerPrefs 로드
+    /// </summary>
+    private void EnsureInitialized()
+    {
+        if (!_initialized)
+        {
+            LoadToken();
+            _initialized = true;
+        }
     }
 
     /// <summary>
     /// 토큰 설정 및 저장
     /// </summary>
-    /// <param name="token">Access Token</param>
-    /// <param name="expiresInSeconds">만료 시간 (초 단위, 기본 1시간)</param>
     public void SetToken(string token, int expiresInSeconds = 3600)
     {
+        EnsureInitialized();
+
         AccessToken = token;
         _tokenExpiry = DateTime.UtcNow.AddSeconds(expiresInSeconds);
 
@@ -64,9 +90,10 @@ public class AuthManager
     /// <summary>
     /// Authorization 헤더 문자열 반환
     /// </summary>
-    /// <returns>Bearer {token} 형식의 문자열</returns>
     public string GetAuthorizationHeader()
     {
+        EnsureInitialized();
+
         if (string.IsNullOrEmpty(_accessToken))
         {
             Debug.LogWarning("[AuthManager] No token available");
@@ -109,6 +136,10 @@ public class AuthManager
             TimeSpan remaining = _tokenExpiry - DateTime.UtcNow;
             Debug.Log($"[AuthManager] Token loaded (valid for {remaining.TotalMinutes:F1} minutes)");
         }
+        else
+        {
+            Debug.Log("[AuthManager] No saved token found");
+        }
     }
 
     /// <summary>
@@ -127,6 +158,8 @@ public class AuthManager
     /// </summary>
     public int GetRemainingSeconds()
     {
+        EnsureInitialized();
+
         if (IsTokenExpired())
             return 0;
 
