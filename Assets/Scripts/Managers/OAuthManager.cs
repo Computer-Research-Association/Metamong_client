@@ -7,38 +7,50 @@ using Metamong.Core;
 
 /// <summary>
 /// Non-MonoBehaviour OAuth Manager
-/// Editor: Mock 토큰 사용
-/// WebGL Build: 실제 OAuth 플로우
+/// 지연 초기화로 GameObject 생성을 첫 사용 시로 연기
 /// </summary>
 public class OAuthManager
 {
     private string API_BASE_URL => AppConfig.Instance.apiBaseUrl;
     private CoroutineRunner coroutineRunner;
+    private bool _initialized = false;
 
     // Editor 테스트용 Mock 토큰
-    [Header("Editor Test Settings")]
-    public string mockToken = ""; // Inspector에서 실제 토큰 붙여넣기
+    public string mockToken = "";
 
     // 이벤트
     public event Action<UserData> OnUserLoggedIn;
 
+    // Constructor - GameObject 생성하지 않음!
     public OAuthManager()
     {
-        // Coroutine 실행을 위한 MonoBehaviour 생성
-        GameObject go = new GameObject("OAuthCoroutineRunner");
-        UnityEngine.Object.DontDestroyOnLoad(go);
-        coroutineRunner = go.AddComponent<CoroutineRunner>();
+        Debug.Log("[OAuthManager] Created (lazy initialization)");
+    }
+
+    /// <summary>
+    /// 지연 초기화 - 처음 사용 시에만 GameObject 생성
+    /// </summary>
+    private void EnsureInitialized()
+    {
+        if (!_initialized)
+        {
+            // Coroutine 실행을 위한 MonoBehaviour 생성
+            GameObject go = new GameObject("OAuthCoroutineRunner");
+            UnityEngine.Object.DontDestroyOnLoad(go);
+            coroutineRunner = go.AddComponent<CoroutineRunner>();
 
 #if UNITY_WEBGL && !UNITY_EDITOR
-        // WebGL 빌드에서만 콜백 리시버 생성
-        GameObject receiver = new GameObject("OAuthCallbackReceiver");
-        UnityEngine.Object.DontDestroyOnLoad(receiver);
-        var receiverScript = receiver.AddComponent<OAuthCallbackReceiver>();
-        receiverScript.Initialize(this);
-        Debug.Log("[OAuthManager] WebGL callback receiver initialized");
+            // WebGL 빌드에서만 콜백 리시버 생성
+            GameObject receiver = new GameObject("OAuthCallbackReceiver");
+            UnityEngine.Object.DontDestroyOnLoad(receiver);
+            var receiverScript = receiver.AddComponent<OAuthCallbackReceiver>();
+            receiverScript.Initialize(this);
+            Debug.Log("[OAuthManager] WebGL callback receiver initialized");
 #endif
 
-        Debug.Log("[OAuthManager] Initialized");
+            _initialized = true;
+            Debug.Log("[OAuthManager] Initialized");
+        }
     }
 
     #region [OAuth Login Flow]
@@ -60,13 +72,15 @@ public class OAuthManager
 
     private void StartOAuthFlow(string provider)
     {
+        EnsureInitialized(); // 여기서 초기화!
+
         Debug.Log($"[OAuth] Starting login with {provider}");
 
 #if UNITY_EDITOR
         // Unity Editor에서는 Mock 토큰 사용
         if (string.IsNullOrEmpty(mockToken))
         {
-            Debug.LogError("[OAuth] Mock token is empty! Please set a valid token in the Inspector.");
+            Debug.LogError("[OAuth] Mock token is empty! Please set a valid token.");
             Debug.LogError("[OAuth] To get a token: Login via WebGL build, then copy token from Console.");
             return;
         }
@@ -92,7 +106,7 @@ public class OAuthManager
 
     private IEnumerator SimulateOAuthSuccess()
     {
-        yield return new WaitForSeconds(0.5f); // 짧은 딜레이
+        yield return new WaitForSeconds(0.5f);
         Debug.Log("[OAuth Editor] Simulating OAuth success with mock token");
         OnOAuthSuccess(mockToken);
     }
@@ -103,6 +117,8 @@ public class OAuthManager
 
     public void OnOAuthSuccess(string token)
     {
+        EnsureInitialized();
+
         Debug.Log("[OAuth] Login successful!");
         Debug.Log($"[OAuth] Token received (length: {token.Length})");
 
@@ -222,6 +238,8 @@ public class OAuthManager
 
     public void RefreshUserInfo(Action<UserData> onSuccess, Action<string> onError)
     {
+        EnsureInitialized();
+
         if (!Managers.Auth.IsLoggedIn)
         {
             Debug.LogWarning("[OAuth] Not logged in");
