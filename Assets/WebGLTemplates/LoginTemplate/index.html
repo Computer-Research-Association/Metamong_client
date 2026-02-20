@@ -177,7 +177,7 @@
       function onUnityReady() {
         if (unityInstance && authToken) {
           unityInstance.SendMessage(
-            "Managers",
+            "@Managers",
             "OnReceiveAuthToken",
             authToken,
           );
