@@ -45,6 +45,7 @@ public class AuthManager
     public event Action<UserData> OnLoginComplete;
     public event Action OnLogout;
     public event Action<string> OnLoginFailed;
+    public event Action<UserData> OnUserUpdated;
 
     public void Init()
     {
