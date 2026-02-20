@@ -30,6 +30,12 @@ public class Managers : MonoBehaviour
         _auth.Init();
     }
 
+    public void OnReceiveAuthToken(string token)
+    {
+        Debug.Log("[Managers] Auth token received from browser");
+        _auth.ReceiveToken(token);
+    }
+
     private static void Init()
     {
         if (_instance == null)
