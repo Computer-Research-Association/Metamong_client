@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Metamong.Core;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -22,6 +23,18 @@ public class AuthManager
 #endif
 
     private const string BACKEND_URL = "http://localhost:8000";
+
+    // 엔드포인트 상수
+    private const string EP_ME = "/api/users/me";
+    private const string EP_ME_RC = "/api/users/me/rc";
+    private const string EP_ME_INIT = "/api/users/me/initialize";
+
+    // Newtonsoft 직렬화 설정 (snake_case → C# 프로퍼티)
+    private static readonly JsonSerializerSettings _jsonSettings = new JsonSerializerSettings
+    {
+        ContractResolver = new DefaultContractResolver(),
+        NullValueHandling = NullValueHandling.Ignore
+    };
 
     // 토큰 및 유저 정보
     public string AccessToken { get; private set; }
