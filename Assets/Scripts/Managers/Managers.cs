@@ -7,21 +7,27 @@ public class Managers : MonoBehaviour
 
     #region [Sub Managers]
 
+    AuthManager _auth = new AuthManager();
     ResourceManager _resource = new ResourceManager();
     UIManager _ui = new UIManager();
 
+
+    public static AuthManager Auth { get { return Instance._auth; } }
     public static ResourceManager Resource { get { return Instance._resource; } }
     public static UIManager UI { get { return Instance._ui; } }
-
-
-    AuthManager _auth = new AuthManager();
-    public static AuthManager Auth { get { return Instance._auth; } }
 
     #endregion
 
     void Awake()
     {
         Init();
+    }
+
+    void Start()
+    {
+        // AuthManager 에 Unity 준비 완료 신호 전달
+        // -> jslib 통해 index.html 의 onUnityReady() 호출 -> SendMessage로 토큰 들어옴
+        _auth.Init();
     }
 
     private static void Init()
