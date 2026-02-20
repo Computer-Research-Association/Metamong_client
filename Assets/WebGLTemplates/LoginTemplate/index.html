@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Game</title>
+    <title>{{{ PRODUCT_NAME }}}</title>
     <link rel="manifest" href="manifest.json" />
     <style>
       body {
@@ -94,9 +94,12 @@
       <canvas id="unity-canvas" style="width: 100%; height: 100%"></canvas>
     </div>
 
-    <script src="Build/MyGame.loader.js"></script>
+    <!-- ✅ 하드코딩 제거: 템플릿 변수로 loader 경로 자동 주입 -->
+    <script src="Build/{{{ LOADER_FILENAME }}}"></script>
     <script>
-      const BACKEND_URL = "https://your-backend.com";
+      const BACKEND_URL = "http://localhost:8000";
+      // ✅ 빌드 폴더 경로를 한 곳에서 관리
+      const buildUrl = "Build";
       let unityInstance = null;
       let authToken = null;
 
@@ -135,7 +138,6 @@
       // OAuth 로그인 시작
       function loginWith(provider) {
         setStatus(`${provider} 로그인 중...`);
-        // 현재 탭을 FastAPI 로그인 URL로 리다이렉트
         window.location.href = `${BACKEND_URL}/api/auth/login/${provider}`;
       }
 
@@ -159,14 +161,15 @@
         document.getElementById("unity-container").style.display = "block";
 
         createUnityInstance(document.querySelector("#unity-canvas"), {
-          dataUrl: "Build/MyGame.data",
-          frameworkUrl: "Build/MyGame.framework.js",
-          codeUrl: "Build/MyGame.wasm",
+          dataUrl: buildUrl + "/{{{ DATA_FILENAME }}}",
+          frameworkUrl: buildUrl + "/{{{ FRAMEWORK_FILENAME }}}",
+          codeUrl: buildUrl + "/{{{ CODE_FILENAME }}}",
+          streamingAssetsUrl: "StreamingAssets",
+          companyName: "{{{ COMPANY_NAME }}}",
+          productName: "{{{ PRODUCT_NAME }}}",
+          productVersion: "{{{ PRODUCT_VERSION }}}",
         }).then((instance) => {
           unityInstance = instance;
-
-          // Unity가 완전히 로드된 후 토큰 주입
-          // Unity 측에서 준비 완료 신호를 보내면 전달
         });
       }
 
