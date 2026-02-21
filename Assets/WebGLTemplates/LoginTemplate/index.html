@@ -144,11 +144,10 @@
       // 토큰 검증
       async function verifyToken(token) {
         try {
-          const res = await fetch(`${BACKEND_URL}/api/auth/verify`, {
+          const res = await fetch(`${BACKEND_URL}/api/users/me`, {
             headers: { Authorization: `Bearer ${token}` },
           });
-          const data = await res.json();
-          return data.valid;
+          return res.ok; // 200이면 유효, 401이면 만료
         } catch {
           return false;
         }
