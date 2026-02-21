@@ -30,6 +30,25 @@ public class Managers : MonoBehaviour
         _auth.Init();
     }
 
+#if UNITY_EDITOR
+    [Header("Debug Settings")]
+    [Tooltip("에디터에서 테스트할 때 사용할 JWT 토큰을 입력하세요.")]
+    [SerializeField] private string _testAccessToken;
+
+    [ContextMenu("Debug/Force Login with Test Token")]
+    public void ForceLogin()
+    {
+        if (string.IsNullOrEmpty(_testAccessToken))
+        {
+            Debug.LogWarning("테스트 토큰이 비어 있습니다! 인스펙터에서 토큰을 입력해 주세요.");
+            return;
+        }
+
+        Debug.Log("[Debug] 인스펙터 토큰으로 강제 로그인 시도");
+        OnReceiveAuthToken(_testAccessToken);
+    }
+#endif
+
     public void OnReceiveAuthToken(string token)
     {
         Debug.Log("[Managers] Auth token received from browser");
