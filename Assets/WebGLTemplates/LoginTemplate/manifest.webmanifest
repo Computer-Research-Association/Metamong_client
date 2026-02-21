@@ -1,0 +1,29 @@
+{
+  "name": {{{ JSON.stringify(PRODUCT_NAME) }}},
+  "short_name": {{{ JSON.stringify(PRODUCT_NAME) }}},
+  "start_url": "index.html",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "background_color": "#1a1a2e",
+  "theme_color": "#1a1a2e",
+  "icons": [
+    {
+      "src": "TemplateData/AppLogo_192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "TemplateData/AppLogo_512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "TemplateData/AppLogo_512_maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
