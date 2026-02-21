@@ -1,0 +1,18 @@
+{
+  "name": {{{ JSON.stringify(PRODUCT_NAME) }}},
+  "short_name": {{{ JSON.stringify(PRODUCT_NAME) }}},
+  "description": {{{ JSON.stringify(PRODUCT_DESCRIPTION) }}},
+  "start_url": "index.html",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "background_color": "{{{ BACKGROUND_COLOR }}}",
+  "theme_color": "{{{ SPLASH_SCREEN_STYLE.toLowerCase() === 'light' ? '#fff' : '#000' }}}",
+  "icons": [
+    {
+      "src": "TemplateData/AppLogo.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
