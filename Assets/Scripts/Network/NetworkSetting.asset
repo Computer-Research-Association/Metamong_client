@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d56b1f14f9806a04f9e93481e98a7147, type: 3}
+  m_Name: NetworkSetting
+  m_EditorClassIdentifier: Assembly-CSharp::NetworkSetting
+  fastApiBaseUrl: http://localhost:8000
+  colyseusServerUrl: ws://localhost:2567
+  requestTimeout: 10
+  maxRetryCount: 3
+  gameRoomName: my_game_room
+  useSecureConnection: 0
+  showNetworkLogs: 1
+  simulatedLatencyMs: 100
