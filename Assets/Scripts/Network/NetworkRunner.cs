@@ -4,10 +4,10 @@ using UnityEngine;
 public class NetworkRunner : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private NetworkCore _networkCore;
     public NetworkSetting settings;
     void Awake()
     {
+        //_networkCore = new NetworkCore();
         NetworkCore.Instance.Initialize(settings);
     }
 

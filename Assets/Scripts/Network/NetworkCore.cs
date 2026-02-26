@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 public class NetworkCore : INetworkProvider
 {
-    public static NetworkCore Instance { get; private set; }
+    public static NetworkCore Instance { get; private set; } = new NetworkCore();
 
     public ColyseusHandler Handler { get; private set; }
 
@@ -14,7 +14,7 @@ public class NetworkCore : INetworkProvider
     public event Action<Vector2> OnServerPositionReceived;
     public void Initialize(NetworkSetting settings)
     {
-        Instance = this;
+        //Instance = this;
         _settings = settings;
         Handler = new ColyseusHandler(settings.colyseusServerUrl); // 또는 주입받음
     }
@@ -31,4 +31,8 @@ public class NetworkCore : INetworkProvider
     {
         await Handler.JoinRoom<MyRoomState>(_settings.gameRoomName);
     }
+
+    public void SubscribeLocalData(Action<Vector2> e) => Handler.onPositionReceived += e;
+    public void SubscribeRemoteData(Action<Vector2> e){}
+
 }

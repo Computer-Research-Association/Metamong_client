@@ -18,6 +18,7 @@ public class PlayerManager : MonoBehaviour
         // 각 컴포넌트 초기화
         inputHandler.Initialize(_moveService);
         playerBehavior.Initialize(_domain);
+        NetworkCore.Instance.SubscribeLocalData(OnServerPositionReceived);
     }
 
     void Update()

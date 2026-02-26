@@ -12,7 +12,7 @@ public class ColyseusHandler
     //private ColyseusRoom<Schema> _room;
     private ColyseusRoom<MyRoomState> _room;
     // Core로부터 전달받은 "보고용" 액션 변수
-    private readonly Action<Vector2> _onPositionReceived;
+    public Action<Vector2> onPositionReceived;
     private readonly Action<string, Vector2> OnPlayerUpdateReceived;
     public ColyseusHandler(string url)
     {
@@ -22,6 +22,7 @@ public class ColyseusHandler
     public void SendMove(Vector2 dir)
     {
         if (_room == null) return;
+        Debug.Log("check dir vector: " + dir);
         _room.Send("move", new { x = dir.x, y = dir.y });
     }
 
@@ -32,7 +33,7 @@ public class ColyseusHandler
             //var room = await _client.JoinOrCreate<T>(roomName);
             //_room = room as ColyseusRoom<Schema>;
             _room = await _client.JoinOrCreate<MyRoomState>(roomName);
-            Debug.Log($"[Colyseus] Joined room: {_room.Id}");
+            Debug.Log($"[Colyseus] Joined room: {_room.SessionId}");
 
             //BindMessages();
             BindStateEvents();
@@ -52,7 +53,7 @@ public class ColyseusHandler
         // 서버에서 "server_pos" 메시지를 보낼 때 처리
         _room.OnMessage<Vector2Serialized>("server_pos", (data) =>
         {
-            _onPositionReceived?.Invoke(new Vector2(data.x, data.y));
+            onPositionReceived?.Invoke(new Vector2(data.x, data.y));
         });
     }
 
@@ -69,7 +70,7 @@ public class ColyseusHandler
                 Debug.Log($"플레이어 ID: {key}, 위치: {player.x}, {player.y}");
                 if (key == _room.SessionId)
                 {
-                    _onPositionReceived?.Invoke(new Vector2(player.x, player.y));
+                    onPositionReceived?.Invoke(new Vector2(player.x, player.y));
                 }
                 else
                 {

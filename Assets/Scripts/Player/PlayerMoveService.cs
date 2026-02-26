@@ -4,7 +4,7 @@ public class PlayerMoveService
 {
     private readonly PlayerDomain _domain;
     //reconciliation을 수행할 최소 오차
-    private readonly float _reconcileThreshold = 0.05f;
+    private readonly float _reconcileThreshold = 3.0f;
     private readonly int _maxHistoryCount = 100;
 
     public PlayerMoveService(PlayerDomain domain) => _domain = domain;
@@ -33,6 +33,8 @@ public class PlayerMoveService
         // 서버 결과와 현재 위치의 차이가 Threshold보다 작으면 무시
         if (Vector2.Distance(_domain.Position, serverPos) < _reconcileThreshold) return;
 
+        Debug.Log("Server pos: " + serverPos + ", predicted pos: " + _domain.Position);
+        Debug.Log("Reconcile applied, distance: " + Vector2.Distance(_domain.Position, serverPos));
         // History에 저장된 인풋을 적용하여 현재 위치 다시 측정
         _domain.Position = serverPos;
         foreach (var frame in _domain.InputHistory)
