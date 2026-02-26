@@ -1,0 +1,871 @@
+fileFormatVersion: 2
+guid: 61c46b7b505f7e04495a40f99c196aed
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4980253765228259512
+    second: brickfloor_0
+  - first:
+      213: -3639805406008188396
+    second: brickfloor_1
+  - first:
+      213: -6575923224275207831
+    second: brickfloor_2
+  - first:
+      213: -3907650799535086316
+    second: brickfloor_3
+  - first:
+      213: -2671196754315152158
+    second: brickfloor_4
+  - first:
+      213: -3038788288872869049
+    second: brickfloor_5
+  - first:
+      213: -4835790819412192173
+    second: brickfloor_6
+  - first:
+      213: -6404412938653311200
+    second: brickfloor_7
+  - first:
+      213: -3967048574699992421
+    second: brickfloor_8
+  - first:
+      213: 4055868437966461814
+    second: brickfloor_9
+  - first:
+      213: -3585603922598495193
+    second: brickfloor_10
+  - first:
+      213: -5435032136691802151
+    second: brickfloor_11
+  - first:
+      213: 3118326841707908545
+    second: brickfloor_12
+  - first:
+      213: 5131657465659632767
+    second: brickfloor_13
+  - first:
+      213: 9118087481882241082
+    second: brickfloor_14
+  - first:
+      213: -4058650035579370448
+    second: brickfloor_15
+  - first:
+      213: 592989293755582314
+    second: brickfloor_16
+  - first:
+      213: -1671623722043863355
+    second: brickfloor_17
+  - first:
+      213: -951787390224339403
+    second: brickfloor_18
+  - first:
+      213: 980672116647050951
+    second: brickfloor_19
+  - first:
+      213: 1126962286720524302
+    second: brickfloor_20
+  - first:
+      213: 8545508030237988597
+    second: brickfloor_21
+  - first:
+      213: 5886638167330753651
+    second: brickfloor_22
+  - first:
+      213: -992818847556391657
+    second: brickfloor_23
+  - first:
+      213: -7587181377052710393
+    second: brickfloor_24
+  - first:
+      213: -5597049264478871621
+    second: brickfloor_25
+  - first:
+      213: -15429892742039490
+    second: brickfloor_26
+  - first:
+      213: 793958609677135509
+    second: brickfloor_27
+  - first:
+      213: 6199277857486333654
+    second: brickfloor_28
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: brickfloor_0
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 1353
+        width: 450
+        height: 154
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8479448469592eab0800000000000000
+      internalID: -4980253765228259512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brickfloor_1
+      rect:
+        serializedVersion: 2
+        x: 740
+        y: 1354
+        width: 287
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 412e55b8440dc7dc0800000000000000
+      internalID: -3639805406008188396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brickfloor_2
+      rect:
+        serializedVersion: 2
+        x: 1064
+        y: 1353
+        width: 309
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 969b5d21ba0adb4a0800000000000000
+      internalID: -6575923224275207831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brickfloor_3
+      rect:
+        serializedVersion: 2
+        x: 2102
+        y: 1353
+        width: 275
+        height: 154
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 415a07b2d4c35c9c0800000000000000
+      internalID: -3907650799535086316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brickfloor_4
+      rect:
+        serializedVersion: 2
+        x: 2424
+        y: 1353
+        width: 131
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e47edd54b00eead0800000000000000
+      internalID: -2671196754315152158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brickfloor_5
+      rect:
+        serializedVersion: 2
+        x: 2595
+        y: 1353
+        width: 148
+        height: 154
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7439d16c62e04d5d0800000000000000
+      internalID: -3038788288872869049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brickfloor_6
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 789
+        width: 153
+        height: 528
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35457d0fed1d3ecb0800000000000000
+      internalID: -4835790819412192173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brickfloor_7
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 790
+        width: 451
+        height: 529
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02f57a44d54fe17a0800000000000000
+      internalID: -6404412938653311200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brickfloor_8
+      rect:
+        serializedVersion: 2
+        x: 742
+        y: 790
+        width: 285
+        height: 528
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9a8942f65632f8c0800000000000000
+      internalID: -3967048574699992421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brickfloor_9
+      rect:
+        serializedVersion: 2
+        x: 1065
+        y: 790
+        width: 307
+        height: 528
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67b95bcfad6594830800000000000000
+      internalID: 4055868437966461814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brickfloor_10
+      rect:
+        serializedVersion: 2
+        x: 1413
+        y: 789
+        width: 306
+        height: 529
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72cf440da306d3ec0800000000000000
+      internalID: -3585603922598495193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brickfloor_11
+      rect:
+        serializedVersion: 2
+        x: 2101
+        y: 789
+        width: 455
+        height: 529
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9df17a55113e294b0800000000000000
+      internalID: -5435032136691802151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brickfloor_12
+      rect:
+        serializedVersion: 2
+        x: 2596
+        y: 1169
+        width: 147
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1cdc09dadb5864b20800000000000000
+      internalID: 3118326841707908545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brickfloor_13
+      rect:
+        serializedVersion: 2
+        x: 2595
+        y: 974
+        width: 148
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7caf9db64f473740800000000000000
+      internalID: 5131657465659632767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brickfloor_14
+      rect:
+        serializedVersion: 2
+        x: 2595
+        y: 789
+        width: 148
+        height: 154
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a38e68c4144f98e70800000000000000
+      internalID: 9118087481882241082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brickfloor_15
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 229
+        width: 154
+        height: 521
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0344aa9db47cca7c0800000000000000
+      internalID: -4058650035579370448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brickfloor_16
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 228
+        width: 451
+        height: 520
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6749e1fe98ba3800800000000000000
+      internalID: 592989293755582314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brickfloor_17
+      rect:
+        serializedVersion: 2
+        x: 740
+        y: 228
+        width: 288
+        height: 523
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ce8579d4133dc8e0800000000000000
+      internalID: -1671623722043863355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brickfloor_18
+      rect:
+        serializedVersion: 2
+        x: 1066
+        y: 228
+        width: 308
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53e6bff49629ac2f0800000000000000
+      internalID: -951787390224339403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brickfloor_19
+      rect:
+        serializedVersion: 2
+        x: 1412
+        y: 227
+        width: 309
+        height: 523
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ceb0e1281c0c9d00800000000000000
+      internalID: 980672116647050951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brickfloor_20
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 228
+        width: 280
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e002d379a36c3af00800000000000000
+      internalID: 1126962286720524302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brickfloor_21
+      rect:
+        serializedVersion: 2
+        x: 2425
+        y: 603
+        width: 130
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f65597074eb79670800000000000000
+      internalID: 8545508030237988597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brickfloor_22
+      rect:
+        serializedVersion: 2
+        x: 2595
+        y: 603
+        width: 148
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37c8105793a81b150800000000000000
+      internalID: 5886638167330753651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brickfloor_23
+      rect:
+        serializedVersion: 2
+        x: 2425
+        y: 445
+        width: 130
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71da611b48cc832f0800000000000000
+      internalID: -992818847556391657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brickfloor_24
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 38
+        width: 450
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70a60567cbae4b690800000000000000
+      internalID: -7587181377052710393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brickfloor_25
+      rect:
+        serializedVersion: 2
+        x: 741
+        y: 38
+        width: 285
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbf106039594352b0800000000000000
+      internalID: -5597049264478871621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brickfloor_26
+      rect:
+        serializedVersion: 2
+        x: 1066
+        y: 37
+        width: 306
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e383034289e29cff0800000000000000
+      internalID: -15429892742039490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brickfloor_27
+      rect:
+        serializedVersion: 2
+        x: 1760
+        y: 38
+        width: 286
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59e2b202625b40b00800000000000000
+      internalID: 793958609677135509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brickfloor_28
+      rect:
+        serializedVersion: 2
+        x: 2101
+        y: 38
+        width: 138
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d6ea6fbd52480650800000000000000
+      internalID: 6199277857486333654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      brickfloor_0: -4980253765228259512
+      brickfloor_1: -3639805406008188396
+      brickfloor_10: -3585603922598495193
+      brickfloor_11: -5435032136691802151
+      brickfloor_12: 3118326841707908545
+      brickfloor_13: 5131657465659632767
+      brickfloor_14: 9118087481882241082
+      brickfloor_15: -4058650035579370448
+      brickfloor_16: 592989293755582314
+      brickfloor_17: -1671623722043863355
+      brickfloor_18: -951787390224339403
+      brickfloor_19: 980672116647050951
+      brickfloor_2: -6575923224275207831
+      brickfloor_20: 1126962286720524302
+      brickfloor_21: 8545508030237988597
+      brickfloor_22: 5886638167330753651
+      brickfloor_23: -992818847556391657
+      brickfloor_24: -7587181377052710393
+      brickfloor_25: -5597049264478871621
+      brickfloor_26: -15429892742039490
+      brickfloor_27: 793958609677135509
+      brickfloor_28: 6199277857486333654
+      brickfloor_3: -3907650799535086316
+      brickfloor_4: -2671196754315152158
+      brickfloor_5: -3038788288872869049
+      brickfloor_6: -4835790819412192173
+      brickfloor_7: -6404412938653311200
+      brickfloor_8: -3967048574699992421
+      brickfloor_9: 4055868437966461814
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
