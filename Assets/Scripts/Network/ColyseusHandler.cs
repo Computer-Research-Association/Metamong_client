@@ -13,7 +13,7 @@ public class ColyseusHandler
     private ColyseusRoom<MyRoomState> _room;
     // Core로부터 전달받은 "보고용" 액션 변수
     public Action<Vector2> onPositionReceived;
-    private readonly Action<string, Vector2> OnPlayerUpdateReceived;
+    public Action<string, Vector2> OnPlayerUpdateReceived;
     public ColyseusHandler(string url)
     {
         _client = new ColyseusClient(url);

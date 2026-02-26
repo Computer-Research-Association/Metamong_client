@@ -33,6 +33,6 @@ public class NetworkCore : INetworkProvider
     }
 
     public void SubscribeLocalData(Action<Vector2> e) => Handler.onPositionReceived += e;
-    public void SubscribeRemoteData(Action<Vector2> e){}
+    public void SubscribeRemoteData(Action<string, Vector2> e) => Handler.OnPlayerUpdateReceived += e;
 
 }
