@@ -9,7 +9,11 @@ public class PlayerMoveService
 
     public PlayerMoveService(PlayerDomain domain) => _domain = domain;
 
-    public void SetDirection(Vector2 dir) => _domain.Direction = dir.normalized;
+    public void SetDirection(Vector2 dir) 
+    { 
+        _domain.Direction = dir.normalized; 
+        NetworkCore.Instance.SendMove(dir.normalized);
+    }
 
     public void Tick(float deltaTime)
     {

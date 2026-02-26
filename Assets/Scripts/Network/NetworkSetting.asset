@@ -16,7 +16,7 @@ MonoBehaviour:
   colyseusServerUrl: ws://localhost:2567
   requestTimeout: 10
   maxRetryCount: 3
-  gameRoomName: my_game_room
+  gameRoomName: my_room
   useSecureConnection: 0
   showNetworkLogs: 1
   simulatedLatencyMs: 100
