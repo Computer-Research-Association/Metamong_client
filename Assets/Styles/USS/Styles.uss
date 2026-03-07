@@ -1,4 +1,8 @@
+.hidden {
+    display: none;
+}
 
-.div {
-  
+Label {
+    -unity-font-definition: resource("Fonts/PixelifySans");
+    color: rgb(255, 255, 255);
 }
