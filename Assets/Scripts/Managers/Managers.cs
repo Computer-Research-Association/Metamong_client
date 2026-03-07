@@ -9,23 +9,21 @@ public class Managers : MonoBehaviour
 
     AuthManager _auth = new AuthManager();
     ResourceManager _resource = new ResourceManager();
+    UIManager _ui;
 
 
     public static AuthManager Auth { get { return Instance._auth; } }
     public static ResourceManager Resource { get { return Instance._resource; } }
+    public static UIManager UI { get { return Instance._ui; } }
 
     #endregion
-
-    void Awake()
-    {
-        Init();
-    }
 
     void Start()
     {
         // AuthManager 에 Unity 준비 완료 신호 전달
         // -> jslib 통해 index.html 의 onUnityReady() 호출 -> SendMessage로 토큰 들어옴
         _auth.Init();
+        _ui.Init();
     }
 
 #if UNITY_EDITOR
@@ -53,6 +51,7 @@ public class Managers : MonoBehaviour
         _auth.ReceiveToken(token);
     }
 
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     private static void Init()
     {
         if (_instance == null)
@@ -66,6 +65,7 @@ public class Managers : MonoBehaviour
 
             DontDestroyOnLoad(go);
             _instance = go.GetComponent<Managers>();
+            _instance._ui = go.AddComponent<UIManager>();
         }
     }
 }

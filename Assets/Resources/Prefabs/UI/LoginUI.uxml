@@ -1,0 +1,9 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Styles/USS/Styles.uss?fileID=7433441132597879392&amp;guid=f08fcbe21e4484914a9610dd7ace505d&amp;type=3#Styles"/>
+    <Style src="project://database/Assets/Styles/USS/Button.uss?fileID=7433441132597879392&amp;guid=c2f38dd53394a47efa84c87e0b62a294&amp;type=3#Button"/>
+    <ui:VisualElement name="Container" style="flex-grow: 1; align-items: center; -unity-font-definition: resource(&quot;Fonts/PixelifySans SDF&quot;); -unity-font-style: normal; font-size: 50px; align-self: center; justify-content: space-around; flex-direction: column; align-content: flex-start; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8);">
+        <ui:VisualElement style="background-image: resource(&quot;Arts/UI/Image/MainPage/MainPageImage&quot;); -unity-background-scale-mode: scale-and-crop; -unity-background-image-tint-color: rgba(255, 255, 255, 0.2); width: 852px; height: 465px; top: 0; position: absolute;"/>
+        <ui:Label text="HANGROUND" name="" style="padding-top: 10px; padding-bottom: 10px; padding-right: 14px; padding-left: 14px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; top: 0; position: absolute; font-size: 22px;"/>
+        <ui:Button text="ENTER" name="EnterButton" focusable="false" class="red" style="bottom: 35px; position: absolute;"/>
+    </ui:VisualElement>
+</ui:UXML>
