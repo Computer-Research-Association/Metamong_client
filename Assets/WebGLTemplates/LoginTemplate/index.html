@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>{{{ PRODUCT_NAME }}}</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="stylesheet" href="TemplateData/style.css" />
+    <!-- CSS 분리 -->
+
+    <!-- iOS PWA 지원 (Safari는 manifest 미지원) -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="apple-mobile-web-app-title" content="{{{ PRODUCT_NAME }}}" />
+    <link rel="apple-touch-icon" href="TemplateData/AppLogo_512.png" />
+
+    <!-- 브라우저 UI 테마 컬러 -->
+    <meta name="theme-color" content="#1a1a2e" />
+  </head>
+  <body>
+    <!-- 모바일 세로 모드 경고 -->
+    <div id="orientation-warning">
+      <div>📱</div>
+      <p>원활한 플레이를 위해<br />기기를 가로로 회전해주세요.</p>
+    </div>
+
+    <!-- 로그인 화면 -->
+    <div id="login-screen">
+      <h1>{{{ PRODUCT_NAME }}}</h1>
+      <button class="oauth-btn btn-google" onclick="loginWith('google')">
+        <img
+          src="TemplateData/Google_Logo.svg"
+          alt="Google"
+          class="provider-logo"
+          onerror="this.style.display = 'none'"
+        />
+        Google로 시작하기
+      </button>
+      <button class="oauth-btn btn-kakao" onclick="loginWith('kakao')">
+        <img
+          src="TemplateData/Kakao_Logo.svg"
+          alt="Kakao"
+          class="provider-logo"
+          onerror="this.style.display = 'none'"
+        />
+        카카오로 시작하기
+      </button>
+      <button class="oauth-btn btn-naver" onclick="loginWith('naver')">
+        <img
+          src="TemplateData/Naver_Logo.svg"
+          alt="Naver"
+          class="provider-logo"
+          onerror="this.style.display = 'none'"
+        />
+        네이버로 시작하기
+      </button>
+      <p id="status"></p>
+    </div>
+
+    <!-- Unity 캔버스 래퍼 -->
+    <div id="unity-container-wrapper">
+      <div id="unity-container">
+        <canvas id="unity-canvas"></canvas>
+      </div>
+      <div id="unity-footer">
+        <div class="unity-title">{{{ PRODUCT_NAME }}}</div>
+        <div id="unity-fullscreen-button" onclick="toggleFullscreen()"></div>
+      </div>
+    </div>
+
+    <!-- Unity WebGL 로더 -->
+    <script src="Build/{{{ LOADER_FILENAME }}}"></script>
+
+    <script>
+      const BACKEND_URL = "http://localhost:8000";
+      const buildUrl = "Build";
+      let unityInstance = null;
+      let authToken = null;
+
+      window.addEventListener("load", function () {
+        const savedToken = localStorage.getItem("auth_token");
+
+        if (savedToken) {
+          setStatus("이전 세션 확인 중...");
+          verifyToken(savedToken).then((valid) => {
+            if (valid) {
+              authToken = savedToken;
+              loadUnity(authToken);
+            } else {
+              localStorage.removeItem("auth_token");
+              setStatus("");
+            }
+          });
+          return;
+        }
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const tokenFromUrl = urlParams.get("token");
+        if (tokenFromUrl) {
+          authToken = tokenFromUrl;
+          localStorage.setItem("auth_token", authToken);
+          window.history.replaceState(
+            {},
+            document.title,
+            window.location.pathname,
+          );
+          loadUnity(authToken);
+        }
+      });
+
+      function loginWith(provider) {
+        setStatus(`${provider} 로그인으로 이동 중...`);
+        window.location.href = `${BACKEND_URL}/api/auth/login/${provider}`;
+      }
+
+      async function verifyToken(token) {
+        try {
+          const res = await fetch(`${BACKEND_URL}/api/users/me`, {
+            headers: { Authorization: `Bearer ${token}` },
+          });
+          return res.ok;
+        } catch {
+          return false;
+        }
+      }
+
+      function loadUnity(token) {
+        setStatus("게임 로딩 중...");
+
+        const loginScreen = document.getElementById("login-screen");
+        const wrapper = document.getElementById("unity-container-wrapper");
+
+        loginScreen.style.opacity = "0";
+
+        setTimeout(() => {
+          loginScreen.style.display = "none";
+          wrapper.style.display = "flex";
+
+          // ✅ 수정: display 변경 완료 후 Unity 로딩 시작
+          const config = {
+            dataUrl: buildUrl + "/{{{ DATA_FILENAME }}}",
+            frameworkUrl: buildUrl + "/{{{ FRAMEWORK_FILENAME }}}",
+            codeUrl: buildUrl + "/{{{ CODE_FILENAME }}}",
+            streamingAssetsUrl: "StreamingAssets",
+            companyName: "{{{ COMPANY_NAME }}}",
+            productName: "{{{ PRODUCT_NAME }}}",
+            productVersion: "{{{ PRODUCT_VERSION }}}",
+          };
+
+          createUnityInstance(document.querySelector("#unity-canvas"), config)
+            .then((instance) => {
+              unityInstance = instance;
+            })
+            .catch((msg) => {
+              alert("Unity 로딩 오류: " + msg);
+            });
+        }, 500);
+      }
+
+      // Unity C# → jslib → 이 함수 호출
+      function onUnityReady() {
+        if (unityInstance && authToken) {
+          unityInstance.SendMessage(
+            "@Managers",
+            "OnReceiveAuthToken",
+            authToken,
+          );
+        }
+      }
+
+      function logoutFromPage() {
+        localStorage.removeItem("auth_token");
+        unityInstance = null;
+        authToken = null;
+
+        document.getElementById("unity-container-wrapper").style.display =
+          "none";
+        const loginScreen = document.getElementById("login-screen");
+        loginScreen.style.display = "flex";
+        loginScreen.style.opacity = "1";
+        setStatus("안전하게 로그아웃되었습니다.");
+      }
+
+      // 브라우저 Fullscreen API로 토글
+      function toggleFullscreen() {
+        const wrapper = document.getElementById("unity-container-wrapper");
+        if (!document.fullscreenElement) {
+          wrapper.requestFullscreen().catch((err) => {
+            console.warn("전체화면 전환 실패:", err);
+          });
+        } else {
+          document.exitFullscreen();
+        }
+      }
+
+      function setStatus(msg) {
+        document.getElementById("status").textContent = msg;
+      }
+    </script>
+  </body>
+</html>
