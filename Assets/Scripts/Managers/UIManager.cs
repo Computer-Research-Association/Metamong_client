@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -19,52 +20,37 @@ public class UIManager : MonoBehaviour
         LoginUI
     }
 
-
-    void Awake()
+    public void Init()
     {
-        if (instance == null)
+        foreach (State state in Enum.GetValues(typeof(State)))
         {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+            GameObject go = Managers.Resource.Instantiate($"UI/State/{state}", transform);
 
-        GameObject[] uiPrefabs = Resources.LoadAll<GameObject>("Prefabs/UI/State");
-
-        _uIDocuments = uiPrefabs
-            .Select(prefab =>
+            if (go == null)
             {
-                GameObject go = Instantiate(prefab, transform);
-                go.name = prefab.name;
-                return go.GetComponent<UIDocument>();
-            })
-            .Where(doc => doc != null)
-            .ToArray();
-
-        foreach (var doc in _uIDocuments)
-        {
-            string name = doc.gameObject.name;
-
-            if (!System.Enum.TryParse(name, out State state))
-            {
-                Debug.LogWarning($"State enum not found for {name}");
+                Debug.LogWarning($"UI Prefab not found : {state}");
                 continue;
             }
 
-            var stateComponent = doc.GetComponent<IState<UIDocument>>();
+            UIDocument doc = go.GetComponent<UIDocument>();
+            if (doc == null)
+            {
+                Debug.LogWarning($"{state} missing UIDocument");
+                continue;
+            }
 
+            var stateComponent = go.GetComponent<IState<UIDocument>>();
             if (stateComponent == null)
             {
-                Debug.LogWarning($"{name} missing IState component");
+                Debug.LogWarning($"{state} missing IState component");
                 continue;
             }
 
             _stateDict.Add(state, (doc, stateComponent));
-            if (doc.gameObject.activeSelf) SetState(state);
+
+            go.SetActive(false);
         }
+        SetState(State.LoginUI);
     }
     public void SetState(State state)
     {
