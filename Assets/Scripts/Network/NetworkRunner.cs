@@ -8,7 +8,7 @@ public class NetworkRunner : MonoBehaviour
     void Awake()
     {
         //_networkCore = new NetworkCore();
-        NetworkCore.Instance.Initialize(settings);
+        NetworkCore.Instance.Initialize(settings, this);
     }
 
     async Task Start()

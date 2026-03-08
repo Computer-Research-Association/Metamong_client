@@ -48,7 +48,8 @@ public class Managers : MonoBehaviour
     public void OnReceiveAuthToken(string token)
     {
         Debug.Log("[Managers] Auth token received from browser");
-        _auth.ReceiveToken(token);
+        //_auth.ReceiveToken(token);
+        NetworkCore.Instance.ReceiveToken(token);
     }
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
