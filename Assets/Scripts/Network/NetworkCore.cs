@@ -2,37 +2,69 @@ using Unity.VisualScripting;
 using UnityEngine;
 using System;
 using System.Threading.Tasks;
+using System.Collections;
+using Metamong.Core;
 
 public class NetworkCore : INetworkProvider
 {
     public static NetworkCore Instance { get; private set; } = new NetworkCore();
 
-    public ColyseusHandler Handler { get; private set; }
+    private ColyseusHandler _colyseusHandler;
+    private FastAPIHandler _fastAPIHandler;
 
     private NetworkSetting _settings;
 
     public event Action<Vector2> OnServerPositionReceived;
-    public void Initialize(NetworkSetting settings)
+    public void Initialize(NetworkSetting settings, MonoBehaviour coroutineRunner)
     {
         //Instance = this;
         _settings = settings;
-        Handler = new ColyseusHandler(settings.colyseusServerUrl); // 또는 주입받음
+        _colyseusHandler = new ColyseusHandler(settings.colyseusServerUrl); // 또는 주입받음
+        _fastAPIHandler = new FastAPIHandler(coroutineRunner, settings.fastApiBaseUrl);
     }
     //private readonly FastAPIHandler _fastApi;
 
 
     public void SendMove(Vector2 direction)
     {
-        Handler.SendMove(direction);
+        _colyseusHandler.SendMove(direction);
     }
 
     //수정해야함, 범용성이 너무 낮지만 일단 씀,,
     public async Task JoinSquare()
     {
-        await Handler.JoinRoom<MyRoomState>(_settings.gameRoomName, _settings.jwt);
+        await _colyseusHandler.JoinRoom<MyRoomState>(_settings.gameRoomName, _settings.jwt);
     }
 
-    public void SubscribeLocalData(Action<Vector2> e) => Handler.onPositionReceived += e;
-    public void SubscribeRemoteData(Action<string, Vector2> e) => Handler.OnPlayerUpdateReceived += e;
+    public void SubscribeLocalData(Action<Vector2> e) => _colyseusHandler.onPositionReceived += e;
+    public void SubscribeRemoteData(Action<string, Vector2> e) => _colyseusHandler.OnPlayerUpdateReceived += e;
 
+    //----------------------------------------------------------------------------------------------------------------------------
+
+    public void ReceiveToken(string token)
+    {
+        _fastAPIHandler.ReceiveToken(token);
+    }
+
+    public IEnumerator InitializeUser(
+        InitializeUserRequest initData,
+        Action<UserData> onSuccess = null,
+        Action<string> onError = null)
+    {
+        return _fastAPIHandler.InitializeUser(initData, onSuccess, onError);
+    }
+
+
+    public IEnumerator UpdateRC(
+        RC newRc,
+        Action<UserData> onSuccess = null,
+        Action<string> onError = null)
+    {
+        return _fastAPIHandler.UpdateRC(newRc, onSuccess, onError);
+    }
+
+    public void Logout()
+    {
+        _fastAPIHandler.Logout();
+    }
 }
