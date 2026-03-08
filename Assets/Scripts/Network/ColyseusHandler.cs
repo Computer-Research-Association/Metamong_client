@@ -5,6 +5,7 @@ using System;
 using System.Threading.Tasks;
 using Unity.VisualScripting;
 using NUnit.Framework;
+using System.Collections.Generic;
 
 public class ColyseusHandler
 {
@@ -26,13 +27,17 @@ public class ColyseusHandler
         _room.Send("move", new { x = dir.x, y = dir.y });
     }
 
-    public async Task<bool> JoinRoom<T>(string roomName) where T : Schema
+    public async Task<bool> JoinRoom<T>(string roomName, string token) where T : Schema
     {
         try
         {
             //var room = await _client.JoinOrCreate<T>(roomName);
             //_room = room as ColyseusRoom<Schema>;
-            _room = await _client.JoinOrCreate<MyRoomState>(roomName);
+            var options = new Dictionary<string, object>
+            {
+                { "token", token }
+            };
+            _room = await _client.JoinOrCreate<MyRoomState>(roomName, options);
             Debug.Log($"[Colyseus] Joined room: {_room.SessionId}");
 
             //BindMessages();
