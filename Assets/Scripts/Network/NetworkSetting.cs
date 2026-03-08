@@ -6,6 +6,7 @@ public class NetworkSetting : ScriptableObject
     [Header("Server Endpoints")]
     public string fastApiBaseUrl = "http://localhost:8000";
     public string colyseusServerUrl = "ws://localhost:2567";
+    public string jwt = "";
 
     [Header("Retry & Timeout")]
     [Range(1, 30)] public int requestTimeout = 10;

@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: NetworkSetting
   m_EditorClassIdentifier: Assembly-CSharp::NetworkSetting
   fastApiBaseUrl: http://localhost:8000
-  colyseusServerUrl: ws://localhost:2567
+  colyseusServerUrl: ws://192.168.0.169:2567
+  jwt: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NzMwMzc4NTQsInN1YiI6IjEifQ.wAiSqck58S4TxcvR1ToRtqR6M8YvzHWfC-FFd4yR8KQ
   requestTimeout: 10
   maxRetryCount: 3
   gameRoomName: my_room

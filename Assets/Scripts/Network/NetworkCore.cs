@@ -29,7 +29,7 @@ public class NetworkCore : INetworkProvider
     //수정해야함, 범용성이 너무 낮지만 일단 씀,,
     public async Task JoinSquare()
     {
-        await Handler.JoinRoom<MyRoomState>(_settings.gameRoomName);
+        await Handler.JoinRoom<MyRoomState>(_settings.gameRoomName, _settings.jwt);
     }
 
     public void SubscribeLocalData(Action<Vector2> e) => Handler.onPositionReceived += e;
