@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d56b1f14f9806a04f9e93481e98a7147, type: 3}
   m_Name: NetworkSetting
   m_EditorClassIdentifier: Assembly-CSharp::NetworkSetting
-  fastApiBaseUrl: http://localhost:8000
+  fastApiBaseUrl: http://192.168.0.169:8000
   colyseusServerUrl: ws://localhost:2567
   requestTimeout: 10
   maxRetryCount: 3
