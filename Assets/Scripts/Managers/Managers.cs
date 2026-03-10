@@ -16,6 +16,9 @@ public class Managers : MonoBehaviour
     public static ResourceManager Resource { get { return Instance._resource; } }
     public static UIManager UI { get { return Instance._ui; } }
 
+    //원래는 필요한 매니저에 주입을 해주어야 함.
+    public static UserData_ userData_= new UserData_();
+
     #endregion
 
     void Start()
@@ -24,6 +27,9 @@ public class Managers : MonoBehaviour
         // -> jslib 통해 index.html 의 onUnityReady() 호출 -> SendMessage로 토큰 들어옴
         _auth.Init();
         _ui.Init();
+
+        //테스트 코드
+        NetworkCore.Instance.LoadData(userData_);
     }
 
 #if UNITY_EDITOR

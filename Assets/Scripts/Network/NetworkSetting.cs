@@ -19,4 +19,5 @@ public class NetworkSetting : ScriptableObject
     [Header("Debug Options")]
     public bool showNetworkLogs = true;
     public int simulatedLatencyMs = 100; // 네트워크 랙 시뮬레이션
+    public MockUserData TestUserData;
 }
