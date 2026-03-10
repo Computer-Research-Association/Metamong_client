@@ -25,7 +25,7 @@ public class LoginUI : MonoBehaviour, IState<UIDocument>
     }
     void OnButtonClicked()
     {
-        Debug.Log($"Enter button clicked");
+        Managers.UI.SetState(UIManager.State.AvatarSettingUI);
     }
     public void Exit()
     {
