@@ -1,0 +1,26 @@
+.black-text-field {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-width: 2px;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+    border-left-color: rgb(125, 125, 125);
+    border-right-color: rgb(125, 125, 125);
+    border-top-color: rgb(125, 125, 125);
+    border-bottom-color: rgb(125, 125, 125);
+    font-size: 20px;
+    background-color: rgb(40, 40, 40);
+    color: rgb(81, 81, 81);
+}
+
+TextField .unity-base-field__input {
+    background-color: rgb(40, 40, 40);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    -unity-text-align: middle-center;
+}
