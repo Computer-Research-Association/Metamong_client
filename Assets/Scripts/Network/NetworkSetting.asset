@@ -21,3 +21,4 @@ MonoBehaviour:
   useSecureConnection: 0
   showNetworkLogs: 1
   simulatedLatencyMs: 100
+  TestUserData: {fileID: 11400000, guid: b933f61f7f43f0f49828763f6d90ff44, type: 2}

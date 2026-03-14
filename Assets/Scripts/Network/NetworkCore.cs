@@ -67,4 +67,16 @@ public class NetworkCore : INetworkProvider
     {
         _fastAPIHandler.Logout();
     }
+
+    public void LoadData(UserData_ userData)
+    {
+        //API 호출을 통해 받은 userData를 userData에 주입하는 FastAPI 함수를 실행해야함
+        //이건 테스트
+        foreach(AvatarData avatarData in _settings.TestUserData.Avatars.GetAvatars())
+        {           
+            userData.Avatars.AddAvatar(avatarData);
+        }
+    }
+
+    
 }
