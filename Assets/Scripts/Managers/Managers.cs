@@ -25,11 +25,11 @@ public class Managers : MonoBehaviour
     {
         // AuthManager 에 Unity 준비 완료 신호 전달
         // -> jslib 통해 index.html 의 onUnityReady() 호출 -> SendMessage로 토큰 들어옴
+        NetworkCore.Instance.LoadData(userData_);
         _auth.Init();
         _ui.Init();
 
         //테스트 코드
-        NetworkCore.Instance.LoadData(userData_);
     }
 
 #if UNITY_EDITOR

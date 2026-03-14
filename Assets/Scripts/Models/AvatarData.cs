@@ -5,7 +5,7 @@ using System;
 public class AvatarData
 {
     public int AvatarId;
-    public string NickName;
+    public string Nickname;
     //public InventoryData inventory = new();
     //public int level;
 }
