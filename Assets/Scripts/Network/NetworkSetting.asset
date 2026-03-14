@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d56b1f14f9806a04f9e93481e98a7147, type: 3}
   m_Name: NetworkSetting
   m_EditorClassIdentifier: Assembly-CSharp::NetworkSetting
-  fastApiBaseUrl: http://192.168.0.169:8000
-  colyseusServerUrl: ws://192.168.0.169:2567
+  fastApiBaseUrl: api.jangmyun.dev
+  colyseusServerUrl: ws.jangmyun.dev
   jwt: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NzMwMzc4NTQsInN1YiI6IjEifQ.wAiSqck58S4TxcvR1ToRtqR6M8YvzHWfC-FFd4yR8KQ
   requestTimeout: 10
   maxRetryCount: 3
