@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 79b331182f1a545f9bd226f7a10cf88c
+guid: f44643ec493624ebf9309459faf8b5ad
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8827835003802394203
-    second: MainPageImage_0
+      213: 4042214581343087011
+    second: AvatarSettingPageBackground_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MainPageImage_0
+      name: AvatarSettingPageBackground_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 2816
-        height: 1533
+        width: 852
+        height: 393
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b5e96610a25c28a70800000000000000
-      internalID: 8827835003802394203
+      spriteID: 3a9ebd2ceb4d81830800000000000000
+      internalID: 4042214581343087011
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 37fb1cb9879fb45cdb2d3bb9ec4b5c3e
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      MainPageImage_0: 8827835003802394203
+      AvatarSettingPageBackground_0: 4042214581343087011
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

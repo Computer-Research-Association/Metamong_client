@@ -1,0 +1,30 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Styles/USS/Styles.uss?fileID=7433441132597879392&amp;guid=f08fcbe21e4484914a9610dd7ace505d&amp;type=3"/>
+    <Style src="project://database/Assets/Styles/USS/Button.uss?fileID=7433441132597879392&amp;guid=c2f38dd53394a47efa84c87e0b62a294&amp;type=3"/>
+    <Style src="project://database/Assets/Styles/USS/Container.uss?fileID=7433441132597879392&amp;guid=d2f357d65f9c246cba374ddfb095b2b6&amp;type=3"/>
+    <Style src="project://database/Assets/Styles/USS/TextField.uss?fileID=7433441132597879392&amp;guid=da9d9ebf559d240b69facef84b362c00&amp;type=3#TextField"/>
+    <ui:VisualElement name="Container" style="flex-grow: 1; align-items: center; -unity-font-definition: resource(&quot;Fonts/PixelifySans SDF&quot;); -unity-font-style: normal; font-size: 50px; align-self: center; justify-content: space-around; flex-direction: column; align-content: flex-start; width: 100%; height: 100%;">
+        <ui:VisualElement style="background-image: resource(&quot;Arts/UI/Image/AvatarSettingPage/AvatarSettingPageBackground&quot;); -unity-background-scale-mode: scale-and-crop; -unity-background-image-tint-color: rgba(255, 255, 255, 0.5); top: -1px; position: absolute; width: 100%; height: 100%; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; left: 0;"/>
+        <ui:Label text="HANGROUND" name="" style="padding-top: 10px; padding-bottom: 10px; padding-right: 14px; padding-left: 14px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; top: 0; position: absolute; font-size: 22px;"/>
+        <ui:VisualElement name="ElementContainer" style="align-items: center; justify-content: center; height: 48%;">
+            <ui:Label text="CHOOSE YOUR CHARACTER" name="InstructionLabel" style="font-size: 24px; position: relative;"/>
+            <ui:ToggleButtonGroup label="" value="0000000" allow-empty-selection="true" picking-mode="Ignore" name="AvatarGroup" style="flex-direction: row; width: 584px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; flex-grow: 1;">
+                <ui:Button text="" icon-image="project://database/Assets/Resources/Arts/UI/Image/AvatarSettingPage/TestAvatar.png?fileID=7482667652216324306&amp;guid=856432435b87f4e9faab52ff3f8ef575&amp;type=3#Square" name="Avatar0" class="only-image" style="width: 32px; height: 64px; background-image: resource(&quot;Arts/UI/Image/AvatarSettingPage/TestAvatar&quot;);"/>
+                <ui:Button text="" icon-image="project://database/Assets/Resources/Arts/UI/Image/AvatarSettingPage/TestAvatar.png?fileID=7482667652216324306&amp;guid=856432435b87f4e9faab52ff3f8ef575&amp;type=3#Square" name="Avatar1" class="only-image" style="width: 32px; height: 64px; background-image: resource(&quot;Arts/UI/Image/AvatarSettingPage/TestAvatar&quot;);"/>
+                <ui:Button text="" icon-image="project://database/Assets/Resources/Arts/UI/Image/AvatarSettingPage/TestAvatar.png?fileID=7482667652216324306&amp;guid=856432435b87f4e9faab52ff3f8ef575&amp;type=3#Square" name="Avatar2" class="only-image" style="width: 32px; height: 64px; background-image: resource(&quot;Arts/UI/Image/AvatarSettingPage/TestAvatar&quot;);"/>
+                <ui:Button text="" icon-image="project://database/Assets/Resources/Arts/UI/Image/AvatarSettingPage/TestAvatar.png?fileID=7482667652216324306&amp;guid=856432435b87f4e9faab52ff3f8ef575&amp;type=3#Square" name="Avatar3" class="only-image" style="width: 32px; height: 64px; background-image: resource(&quot;Arts/UI/Image/AvatarSettingPage/TestAvatar&quot;);"/>
+                <ui:Button text="" icon-image="project://database/Assets/Resources/Arts/UI/Image/AvatarSettingPage/TestAvatar.png?fileID=7482667652216324306&amp;guid=856432435b87f4e9faab52ff3f8ef575&amp;type=3#Square" name="Avatar4" class="only-image" style="width: 32px; height: 64px; background-image: resource(&quot;Arts/UI/Image/AvatarSettingPage/TestAvatar&quot;);"/>
+                <ui:Button text="" icon-image="project://database/Assets/Resources/Arts/UI/Image/AvatarSettingPage/TestAvatar.png?fileID=7482667652216324306&amp;guid=856432435b87f4e9faab52ff3f8ef575&amp;type=3#Square" name="Avatar5" class="only-image" style="width: 32px; height: 64px; background-image: resource(&quot;Arts/UI/Image/AvatarSettingPage/TestAvatar&quot;);"/>
+                <ui:Button text="" icon-image="project://database/Assets/Resources/Arts/UI/Image/AvatarSettingPage/TestAvatar.png?fileID=7482667652216324306&amp;guid=856432435b87f4e9faab52ff3f8ef575&amp;type=3#Square" name="Avatar6" class="only-image" style="width: 32px; height: 64px; background-image: resource(&quot;Arts/UI/Image/AvatarSettingPage/TestAvatar&quot;);"/>
+            </ui:ToggleButtonGroup>
+            <ui:VisualElement name="TextFieldContainer" style="width: 584px; height: 584px; align-items: center; justify-content: center;">
+                <ui:TextField placeholder-text="Type your nickname" class="black-text-field" style="width: 340px; height: 44px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 10px; padding-bottom: 10px; padding-right: 20px; padding-left: 20px; background-color: rgb(40, 40, 40);"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="ButtonContainer" class="row-container" style="flex-grow: 1; width: 400px; flex-direction: row; height: 48px; bottom: 35px;">
+            <ui:Button text="CREATE" name="CreateButton" focusable="false" class="black" style="position: relative;"/>
+            <ui:Button text="ENTER" name="EnterButton" focusable="false" class="red"/>
+            <ui:Button text="DELETE" name="DeleteButton" focusable="false" class="black"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

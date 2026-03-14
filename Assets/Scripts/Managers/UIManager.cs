@@ -8,16 +8,14 @@ using UnityEngine.UIElements;
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
-
-    [SerializeField]
-    private UIDocument[] _uIDocuments;
     private Stack<State> _stateStack = new();
     private Dictionary<State, (UIDocument doc, IState<UIDocument> state)> _stateDict = new();
     private IState<UIDocument> _state;
 
     public enum State
     {
-        LoginUI
+        LoginUI,
+        AvatarSettingUI
     }
 
     public void Init()
@@ -79,5 +77,15 @@ public class UIManager : MonoBehaviour
     public void Hide(VisualElement element)
     {
         element.AddToClassList("hidden");
+    }
+
+    public void Hide(ToggleButtonGroup element)
+    {
+        element.AddToClassList("hidden");
+    }
+
+    public bool IsElementHidden(VisualElement element)
+    {
+        return element.ClassListContains("hidden");
     }
 }
