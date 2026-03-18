@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NetworkSetting
   fastApiBaseUrl: api.jangmyun.dev
   colyseusServerUrl: ws.jangmyun.dev
-  jwt: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NzMwMzc4NTQsInN1YiI6IjEifQ.wAiSqck58S4TxcvR1ToRtqR6M8YvzHWfC-FFd4yR8KQ
+  jwt: 
   requestTimeout: 10
   maxRetryCount: 3
   gameRoomName: my_room
