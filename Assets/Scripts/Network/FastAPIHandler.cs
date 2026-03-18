@@ -25,6 +25,7 @@ public class FastAPIHandler
     private const string EP_ME = "/api/users/me";
     private const string EP_ME_RC = "/api/users/me/rc";
     private const string EP_ME_INIT = "/api/users/me/initialize";
+    private const string EP_DEV_LOGIN = "/api/auth/dev-login";
     // Newtonsoft 직렬화 설정 (snake_case → C# 프로퍼티)
     private static readonly JsonSerializerSettings _jsonSettings = new JsonSerializerSettings
     {
@@ -50,6 +51,9 @@ public class FastAPIHandler
         BACKEND_URL = FastAPIUrl;
 #if UNITY_WEBGL && !UNITY_EDITOR
         NotifyUnityReady();
+#endif
+#if UNITY_EDITOR
+        _runner.StartCoroutine(DevLogin());
 #endif
     }
 
@@ -293,4 +297,41 @@ public class FastAPIHandler
         AccessToken = null;
         CurrentUser = null;
     }
+
+#if UNITY_EDITOR
+    // 에디터 전용: dev-login 엔드포인트로 토큰 자동 발급
+    private IEnumerator DevLogin()
+    {
+        Debug.Log("[Auth][Editor] dev-login 시도");
+        using (UnityWebRequest www = new UnityWebRequest($"{BACKEND_URL}{EP_DEV_LOGIN}", "POST"))
+        {
+            www.uploadHandler   = new UploadHandlerRaw(new byte[0]);
+            www.downloadHandler = new DownloadHandlerBuffer();
+            www.SetRequestHeader("Content-Type", "application/json");
+            yield return www.SendWebRequest();
+
+            if (www.result == UnityWebRequest.Result.Success)
+            {
+                try
+                {
+                    var resp = JsonConvert.DeserializeObject<Metamong.Core.TokenResponse>(
+                        www.downloadHandler.text, _jsonSettings);
+                    if (resp != null && !string.IsNullOrEmpty(resp.AccessToken))
+                    {
+                        Debug.Log($"[Auth][Editor] dev-login 성공 | user: {resp.Nickname}");
+                        ReceiveToken(resp.AccessToken);
+                    }
+                }
+                catch (JsonException e)
+                {
+                    Debug.LogError($"[Auth][Editor] TokenResponse 역직렬화 실패: {e.Message}");
+                }
+            }
+            else
+            {
+                Debug.LogWarning($"[Auth][Editor] dev-login 실패: {www.responseCode} {www.error}");
+            }
+        }
+    }
+#endif
 }

@@ -33,4 +33,14 @@ namespace Metamong.Core
     /// <summary>RC가 아직 배정되지 않은 상태</summary>
     public bool IsRcUnassigned => Rc == RC.UNASSIGNED;
   }
+
+  /// <summary>POST /api/auth/dev-login 응답 스키마 (에디터 전용)</summary>
+  public class TokenResponse
+  {
+    [JsonProperty("access_token")] public string AccessToken { get; set; }
+    [JsonProperty("token_type")]   public string TokenType   { get; set; }
+    [JsonProperty("user_id")]      public int    UserId      { get; set; }
+    [JsonProperty("email")]        public string Email       { get; set; }
+    [JsonProperty("nickname")]     public string Nickname    { get; set; }
+  }
 }
