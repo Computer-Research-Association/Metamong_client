@@ -58,6 +58,11 @@ public class NetworkCore : INetworkProvider
 
     public void ReceiveToken(string token)
     {
+        if (_fastAPIHandler == null)
+        {
+            Debug.LogError("[NetworkCore] ReceiveToken 실패: FastAPIHandler가 초기화되지 않았습니다.");
+            return;
+        }
         _fastAPIHandler.ReceiveToken(token);
     }
 
