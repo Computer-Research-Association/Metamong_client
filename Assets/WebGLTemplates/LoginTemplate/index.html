@@ -156,6 +156,9 @@
           createUnityInstance(document.querySelector("#unity-canvas"), config)
             .then((instance) => {
               unityInstance = instance;
+              // Unity 로딩 완료 후 토큰 전달 재시도
+              // (NotifyUnityReady()가 unityInstance 세팅 전에 호출된 경우 대비)
+              onUnityReady();
             })
             .catch((msg) => {
               alert("Unity 로딩 오류: " + msg);
