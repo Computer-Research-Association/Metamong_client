@@ -1,24 +1,18 @@
-using System.Threading.Tasks;
 using UnityEngine;
 
 public class NetworkRunner : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     public NetworkSetting settings;
+
     void Awake()
     {
-        //_networkCore = new NetworkCore();
+        // 씬 전환 시 중복 생성 방지
+        if (FindObjectsByType<NetworkRunner>(FindObjectsSortMode.None).Length > 1)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        DontDestroyOnLoad(gameObject);
         NetworkCore.Instance.Initialize(settings, this);
-    }
-
-    async Task Start()
-    {
-        await NetworkCore.Instance.JoinSquare();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
