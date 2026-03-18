@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 using Metamong.Core;
@@ -23,7 +24,7 @@ public class TestWelcomeUI : MonoBehaviour
         // UGUI 클릭을 위한 EventSystem 보장
         if (FindObjectsByType<EventSystem>(FindObjectsSortMode.None).Length == 0)
             new GameObject("EventSystem").AddComponent<EventSystem>()
-                .gameObject.AddComponent<StandaloneInputModule>();
+                .gameObject.AddComponent<InputSystemUIInputModule>();
 
         _enterButton.gameObject.SetActive(false);
         _enterButton.onClick.AddListener(OnEnterClicked);
@@ -51,6 +52,7 @@ public class TestWelcomeUI : MonoBehaviour
 
     private void OnEnterClicked()
     {
+        Debug.Log($"[TestWelcomeUI] Enter clicked, loading scene: '{_gameSceneName}'");
         SceneManager.LoadScene(_gameSceneName);
     }
 }
