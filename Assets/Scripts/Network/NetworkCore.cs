@@ -15,6 +15,16 @@ public class NetworkCore : INetworkProvider
     private NetworkSetting _settings;
 
     public event Action<Vector2> OnServerPositionReceived;
+
+    // FastAPIHandler 이벤트 및 상태 외부 노출
+    public event Action<UserData> OnLoginComplete
+    {
+        add => _fastAPIHandler.OnLoginComplete += value;
+        remove => _fastAPIHandler.OnLoginComplete -= value;
+    }
+    public bool IsLoggedIn => _fastAPIHandler?.IsLoggedIn ?? false;
+    public UserData CurrentUser => _fastAPIHandler?.CurrentUser;
+
     public void Initialize(NetworkSetting settings, MonoBehaviour coroutineRunner)
     {
         //Instance = this;
