@@ -772,7 +772,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33daac6dde8f39242b6797aef805a165, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NetworkRunner
-  settings: {fileID: 0}
+  settings: {fileID: 11400000, guid: 010b5d7fc2be8ea41bdba2b4c2e1fe33, type: 2}
 --- !u!4 &2023081004
 Transform:
   m_ObjectHideFlags: 0
