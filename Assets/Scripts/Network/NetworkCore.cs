@@ -33,7 +33,12 @@ public class NetworkCore : INetworkProvider
     //수정해야함, 범용성이 너무 낮지만 일단 씀,,
     public async Task JoinSquare()
     {
-        await _colyseusHandler.JoinRoom<MyRoomState>(_settings.gameRoomName, _settings.jwt);
+        if (_fastAPIHandler == null || !_fastAPIHandler.IsLoggedIn)
+        {
+            Debug.LogWarning("[NetworkCore] JoinSquare 실패: 로그인 상태가 아닙니다.");
+            return;
+        }
+        await _colyseusHandler.JoinRoom<MyRoomState>(_settings.gameRoomName, _fastAPIHandler.AccessToken);
     }
 
     public void SubscribeLocalData(Action<Vector2> e) => _colyseusHandler.onPositionReceived += e;
