@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using TMPro;
 using Metamong.Core;
@@ -19,6 +20,11 @@ public class TestWelcomeUI : MonoBehaviour
 
     void Start()
     {
+        // UGUI 클릭을 위한 EventSystem 보장
+        if (FindObjectsByType<EventSystem>(FindObjectsSortMode.None).Length == 0)
+            new GameObject("EventSystem").AddComponent<EventSystem>()
+                .gameObject.AddComponent<StandaloneInputModule>();
+
         _enterButton.gameObject.SetActive(false);
         _enterButton.onClick.AddListener(OnEnterClicked);
 
@@ -39,7 +45,7 @@ public class TestWelcomeUI : MonoBehaviour
 
     private void ShowWelcome(UserData user)
     {
-        _welcomeText.text = $"환영합니다, {user.Nickname}님!";
+        _welcomeText.text = $"Welcome, {user.Nickname}!";
         _enterButton.gameObject.SetActive(true);
     }
 
